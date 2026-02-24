@@ -9,7 +9,7 @@ const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   //  إذا لم يتم إرسال الهيدر أو لا يبدأ بـ "Bearer "
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+  if (!authHeader || !authHeader.startsWith("Bearer")) {
     // نرجع خطأ 401 Unauthorized
     return res.status(401).json({ message: "لم يتم إرسال التوكن" });
   }

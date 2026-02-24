@@ -55,35 +55,13 @@ const createUser = async (req, res) => {
   }
 };
 
-
-// تحديث بيانات مستخدم
-
-// const updateUser = async (req, res) => {
-//   try {
-//     // البحث عن المستخدم بالـ ID
-//     const user = await User.findByPk(req.params.id);
-//     if (!user) return res.status(404).json({ message: "User not found" });
-
-//     // جلب البيانات الجديدة من الطلب
-//     const { firstName, lastName, email, role } = req.body;
-
-//     // تحديث البيانات
-//     await user.update({ firstName, lastName, email, role });
-
-//     // إرسال الرد للعميل مع بيانات المستخدم المحدثة
-//     res.json(user);
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// };
-
 const updateUser = async (req, res) => {
   try {
     // جلب بيانات المستخدم من التوكن وليس من req.params.id
     const user = await User.findByPk(req.user.id);
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password,phone } = req.body;
 
     if (password) {
       const salt = await bcrypt.genSalt(10);
@@ -93,10 +71,50 @@ const updateUser = async (req, res) => {
     user.firstName = firstName || user.firstName;
     user.lastName = lastName || user.lastName;
     user.email = email || user.email;
+    user.phone=phone ||user.phone
 
     await user.save();
 
     res.json({ message: "Profile updated successfully", user });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+
+
+    // جلب بيانات المستخدم الحالي (من التوكن)
+const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.user.id, {
+      attributes: ["id", "firstName", "lastName", "email", "role", "phone"]
+    });
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.json(user);
+
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+          const changePassword = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    const { currentPassword, newPassword } = req.body;
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Current password is incorrect" });
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    res.json({ message: "Password updated successfully" });
+
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -120,4 +138,4 @@ const deleteUser = async (req, res) => {
 };
 
 // تصدير الدوال لاستخدامها في الـ Routes
-module.exports = { getAllUsers, getUserById, createUser, updateUser, deleteUser };
+module.exports = { getAllUsers, getUserById, createUser, updateUser, deleteUser,getCurrentUser,changePassword };

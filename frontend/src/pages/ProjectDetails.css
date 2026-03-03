@@ -1,0 +1,112 @@
+.project-details-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 25px;
+  font-family: "Poppins", sans-serif;
+  margin-top: 80PX;
+}
+
+.project-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.project-main-image {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 25px 0 10px;
+  color: #333;
+}
+
+.project-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.project-video {
+  width: 100%;
+  height: 360px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#map {
+  width: 100%;
+  height: 380px;
+  border-radius: 12px;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-title {
+    font-size: 26px;
+  }
+
+  .project-video {
+    height: 260px;
+  }
+
+  #map {
+    height: 260px;
+  }
+}
+.back-btn {
+  background: #090e31;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.back-btn:hover {
+  background: #e2e2e2;
+}
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: left;
+}

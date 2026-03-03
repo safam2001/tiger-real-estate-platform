@@ -1,0 +1,76 @@
+.user-installments {
+  padding: 25px;
+  max-width: 900px;
+  margin: auto;
+  margin-top: 70px;
+}
+
+.installments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.installments-table th,
+.installments-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.installments-table thead tr {
+  background: #0d1b20;
+  color: white;
+}
+
+/* pending */
+.status-cell.pending {
+  background: #fff4cc;
+  color: #8a6d00;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* paid */
+.status-cell.paid {
+  background: #d4f8d4;
+  color: #0f6b1b;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* overdue */
+.status-cell.overdue {
+  background: #ffe5e5;
+  color: #b30000;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.overdue-row {
+  background: #ffe5e5 !important;
+}
+
+.installments-table-user thead tr {
+  background-color: #0d1b20; /* كحلي */
+  color: white; /* نص أبيض */
+}
+
+.installments-table th {
+  padding: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.pay-btn {
+  background: #007bff;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.pay-btn:hover {
+  background: #005fcc;
+}

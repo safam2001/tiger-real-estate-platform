@@ -1,0 +1,98 @@
+/* الحاوية الأساسية للصفحة */
+.login-page {
+  min-height: 100vh;              /* تغطي كامل الشاشة */
+  padding-top: 120px;             /* تبعد عن الـ Navbar */
+  padding-bottom: 120px;          /* تبعد عن الـ Footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;            /* خلفية خفيفة */
+  position: relative;
+  z-index: 10;                    /* فوق كل العناصر */
+}
+
+/* الفورم */
+.login-form {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* العنوان */
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* الليبل */
+.login-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* الحقول */
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* زر تسجيل الدخول */
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background: #0d1b2a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login-form button:hover {
+  background: #234a74;
+}
+
+/* الرسائل */
+.login-display {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.login-display.success {
+  color: green;
+}
+
+.login-display.error {
+  color: red;
+}
+
+/* رابط التسجيل */
+.login-link {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-link a {
+  color:  #004aad;
+  font-weight: 600;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+}

@@ -1,0 +1,164 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ================= HERO SECTION ================= */
+
+
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* الصورة */
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/homenew.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+    filter: brightness(0.7);
+}
+
+/* الطبقة الداكنة */
+/* .hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2;
+} */
+
+/* النص */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 52px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.explore-btn {
+  padding: 12px 30px;
+  font-size: 18px;
+  background: #0d1b2a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.explore-btn:hover {
+  background: #8c6a2d;
+  transform: scale(1.05);
+}
+
+/* ================= GALLERY ================= */
+.gallery-section {
+  padding: 100px 8%;
+  background: #ffffff;
+  text-align: center;
+}
+
+.gallery-section h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #a17b34;
+}
+
+.gallery-wrapper {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* ================= STATS SECTION ================= */
+.stats-section {
+  padding: 100px 8%;
+  background: #f5f5f5;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.stat-item {
+  background: white;
+  padding: 50px 30px;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.stat-item:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.stat-icon {
+  font-size: 45px;
+  margin-bottom: 20px;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #a17b34;
+}
+
+.stat-label {
+  font-size: 16px;
+  color: #555;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+}

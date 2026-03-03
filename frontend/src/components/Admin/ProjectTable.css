@@ -1,0 +1,20 @@
+.project-table-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* يمكن إضافة scrollbar إذا كثرت المشاريع */
+.project-table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-table-container::-webkit-scrollbar-thumb {
+  background: #0d1b2a;
+  border-radius: 4px;
+}
+
+.project-table-container::-webkit-scrollbar-track {
+  background: #f4f6f8;
+}

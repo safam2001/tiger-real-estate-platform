@@ -1,0 +1,122 @@
+/* ===== Admin Layout ===== */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f8;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background: #0d1b2a;
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.25);
+}
+
+.sidebar h2 {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background: #173453;
+  color: #ffe08a;
+  transform: translateX(5px);
+}
+
+/* ===== Main Content ===== */
+.admin-content {
+  margin-left: 250px; /* نفس عرض الـ sidebar */
+  padding: 40px;
+  flex: 1;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #f4f6f8;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+    padding: 20px 15px;
+  }
+  .admin-content {
+    margin-left: 200px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px 10px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .sidebar ul li {
+    margin: 0;
+  }
+
+  .admin-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
+.logout-btn {
+  width: 100%;
+  padding: 12px 15px;
+  background: #b22222;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #8b1a1a;
+  transform: translateX(5px);
+}

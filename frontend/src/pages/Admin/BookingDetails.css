@@ -1,0 +1,151 @@
+/* ============================
+   الصفحة العامة
+============================ */
+.booking-details-page {
+    padding: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.booking-details-page h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 700;
+   
+}
+
+/* ============================
+   كارد معلومات الحجز
+============================ */
+.details-card-page {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+    color: black;
+}
+
+.details-card-page h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0d1b20;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.details-grid p {
+    margin: 0;
+    font-size: 15px;
+}
+
+/* ============================
+   زر إنشاء خطة الأقساط
+============================ */
+.installment-btn-page {
+    background: #0d1b20;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: 0.2s;
+}
+
+.installment-btn-page:hover {
+    background: #183658;
+}
+
+/* ============================
+   جدول الأقساط
+============================ */
+.installments-section {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.installments-section h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #0d1b20;
+}
+
+.installments-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.installments-table th,
+.installments-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 15px;
+}
+
+.installments-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+}
+
+.installments-table tr:hover {
+    background: #f5f7ff;
+}
+
+/* ============================
+   صف القسط المتأخر
+============================ */
+.overdue-row {
+    background: #ffe5e5 !important;
+    color: #b30000;
+    font-weight: 600;
+}
+/* تنسيق الهيدر (السطر الأول) في جدول الأقساط */
+.installments-table thead tr {
+    background-color: #0d1b20 !important;
+}
+
+.installments-table thead th {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+/*  */
+/* الحالة: pending */
+.status-cell.pending {
+    background-color: #fff4cc; /* أصفر فاتح */
+    color: #8a6d00;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-transform: capitalize;
+}
+
+/* الحالة: paid */
+.status-cell.paid {
+    background-color: #d4f8d4; /* أخضر فاتح */
+    color: #0f6b1b;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-transform: capitalize;
+}
+
+/* الحالة: overdue */
+.status-cell.overdue {
+    background-color: #ffe5e5; /* أحمر فاتح */
+    color: #b30000;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-transform: capitalize;
+}

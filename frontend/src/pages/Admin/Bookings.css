@@ -1,0 +1,183 @@
+
+.admin-bookings {
+  padding: 30px;
+  background: #f5f7fa;
+  min-height: 100vh;
+
+}
+
+.admin-bookings h1 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* ============================
+   جدول الحجوزات
+============================ */
+.bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bookings-table th {
+  background: #1e293b;
+  color: #fff;
+  padding: 14px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.bookings-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #242323;
+}
+
+.bookings-table tr:hover {
+  background: #f1f5f9;
+}
+
+/* 
+   الأزرار
+*/
+.confirm-btn,
+.cancel-btn,
+.paid-btn,
+.details-btn,
+.installment-btn {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 6px;
+  transition: 0.2s;
+  width: 80px;
+  height: 40px;
+  display: inline-flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+/* Confirm */
+.confirm-btn {
+  background: #16a34a;
+  color: #fff;
+}
+.confirm-btn:hover {
+  background: #15803d;
+}
+
+/* Cancel */
+.cancel-btn {
+  background: #dc2626;
+  color: #fff;
+}
+.cancel-btn:hover {
+  background: #b91c1c;
+}
+
+/* Mark Paid */
+.paid-btn {
+  background:#284e75;
+  color: #fff;
+  /* margin-top: 4px; */
+}
+.paid-btn:hover {
+  background: #285786;
+}
+.details-btn{
+  background:orange;
+  color: #fff;
+  margin-top: 2px;
+}
+
+/* Installment Plan */
+.installment-btn {
+  background:  #1d3579;
+  color: #fff;
+}
+.installment-btn:hover {
+  background: #7e22ce;
+}
+
+/* 
+   المودال
+ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  padding: 25px;
+  width: 380px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.25s ease;
+}
+
+.modal h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0d1b20;
+}
+
+.modal label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  color:black ;
+}
+
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 16px;
+  font-weight: 500;
+  color:#333;
+}
+
+.modal button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  background: #0d1b20;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.modal button:hover {
+  background: #1d3579;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

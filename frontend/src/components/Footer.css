@@ -1,0 +1,232 @@
+.footer {
+  background:#0d1b2a ;
+  color: white;
+  padding: 60px 20px 20px;
+  margin-top: 80px;
+  direction: ltr; /* LTR */
+}
+
+/* ====== MAIN CONTAINER ====== */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;              /* FLEX بدل GRID */
+  flex-wrap: wrap;            /* السماح بالنزول لسطر جديد */
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+/* ====== SECTIONS ====== */
+.footer-section {
+  flex: 1 1 250px;
+  min-width: 250px;
+}
+
+.footer-section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  /* color: #FF6B35; */
+  color: #d4af37;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* ====== LOGO ====== */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.footer-logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* ====== DESCRIPTION ====== */
+.footer-description {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+/* ====== SOCIAL ====== */
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  /* background: #FF6B35; */
+  background: #d4af37;
+  transform: translateY(-3px);
+}
+
+/* ====== QUICK LINKS ====== */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  /* color: #FF6B35; */
+  color: #d4af37;
+  padding-left: 5px;
+}
+
+/* ====== CONTACT INFO ====== */
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* ====== NEWSLETTER ====== */
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newsletter-form input {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 4px;
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  /* border-color: #FF6B35; */
+  background: #d4af37;
+}
+
+.newsletter-form button {
+  padding: 12px 20px;
+  /* background: #FF6B35;
+   */
+   background: #d4af37;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  /* background: #e55a2b; */
+  background: #d4af37;
+  transform: translateY(-2px);
+}
+
+/* ====== FOOTER BOTTOM ====== */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.footer-bottom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  direction: ltr;
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-legal a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  /* color: #FF6B35; */
+  color: #d4af37;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-bottom-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}

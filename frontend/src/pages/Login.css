@@ -1,31 +1,44 @@
 /* الحاوية الأساسية للصفحة */
 .login-page {
-  min-height: 100vh;              /* تغطي كامل الشاشة */
-  padding-top: 120px;             /* تبعد عن الـ Navbar */
-  padding-bottom: 120px;          /* تبعد عن الـ Footer */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f5f5f5;            /* خلفية خفيفة */
-  position: relative;
-  z-index: 10;                    /* فوق كل العناصر */
-}
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
+  background-image:url("https://images.unsplash.com/photo-1505843513577-22bb7d21e455");
+  background-size:cover;
+  background-position:center;                   /* فوق كل العناصر */
+}
+.login-page::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.55);
+}
 /* الفورم */
 .login-form {
-  width: 100%;
-  max-width: 380px;
-  background: #fff;
-  padding: 30px 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  position:relative;
+  width:380px;
+  padding:40px;
+  border-radius:16px;
+
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.08);
+
+  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+
+  color:white;
+  display:flex;
+  flex-direction:column;
 }
 
 /* العنوان */
 .login-form h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #333;
+   font-size:28px;
+  letter-spacing:1px;
 }
 
 /* الليبل */
@@ -33,7 +46,7 @@
   display: block;
   margin-bottom: 6px;
   font-weight: 600;
-  color: #444;
+  color: black;
 }
 
 /* الحقول */
@@ -42,25 +55,34 @@
   padding: 12px;
   margin-bottom: 18px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 15px;
+   border-radius:8px;
+  border:none;
+  outline:none;
+  background:rgba(255,255,255,0.9);
 }
 
 /* زر تسجيل الدخول */
 .login-form button {
   width: 100%;
   padding: 12px;
-  background: #0d1b2a;
+
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
   transition: 0.2s;
+    border:none;
+  border-radius:8px;
+   background:linear-gradient(135deg,#cfa23b,#f7d774);
 }
 
 .login-form button:hover {
-  background: #234a74;
+  /* background: #234a74; */
+    transform:scale(1.04);
+     background: #ecbd4e; 
 }
 
 /* الرسائل */
@@ -68,6 +90,7 @@
   margin-top: 10px;
   text-align: center;
   font-weight: 600;
+    font-size:14px;
 }
 
 .login-display.success {
@@ -83,10 +106,11 @@
   margin-top: 15px;
   text-align: center;
   font-size: 14px;
+  font-weight: 500;
 }
 
 .login-link a {
-  color:  #004aad;
+  color: #ffd369;
   font-weight: 600;
 }
 

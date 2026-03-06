@@ -1,66 +1,81 @@
 
 .register-page {
-  /* min-height: 100vh;  */
-  height: 800px;
+  height: 680px;
   display: flex; 
   align-items: center; 
   justify-content: center; 
   background: #f5f5f5;
   padding: 20px; 
-  margin-top: 50px;
+  margin-top: 80px;
+  background-image:url("https://images.unsplash.com/photo-1505843513577-22bb7d21e455");
+  background-size:cover;
+  background-position:center;
 }
 
 .register-form {
-  background: white; 
+
   padding: 40px; /* مسافة داخلية */
   border-radius: 10px; 
   box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
   width: 100%;
   max-width: 400px; 
+  height:100%;
+   background:rgba(0,0,0,0.55);
+     backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.08);
+
+  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+
+  color:white;
+  display:flex;
+  flex-direction:column;
 }
 
 .register-form h2 {
   text-align: center; 
   margin-bottom: 30px; 
-  color: #333;
+  color: white;
   font-size: 2rem; 
 }
 
 .register-form label {
   display: block;
   margin-bottom: 8px; 
-  font-weight: 500; 
+  font-weight: 600; 
+  color: black;
 }
 
 .register-form input {
   width: 100%; 
   padding: 12px;
   border: 1px solid #ddd; 
-  border-radius: 5px; 
+  border-radius: 8px; 
   font-size: 1rem;
   margin-bottom: 20px; 
   box-sizing: border-box; 
+   background:rgba(255,255,255,0.9);
 }
 
 .register-form input:focus {
   outline: none; 
-  border-color: #004aad; 
+
 }
 
 .register-form button {
   width: 100%;
   padding: 12px;
-  background: #0d1b2a; /* لون الزر */
+ 
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer; 
   transition: background 0.3s; 
+   background:linear-gradient(135deg,#cfa23b,#f7d774);
 }
 .register-form button:hover {
-  background:  #234a74; 
+  background: #ecbd4e; 
 }
 
 /* رسائل النجاح والخطأ */
@@ -85,13 +100,15 @@
 .register-link {
   text-align: center;
   margin-top: 20px;
-  color: #666;
+  color:white;
+  font-weight: 500;
 }
 
 .register-link a {
-  color: #004aad;
+  /* color: #004aad; */
+   color:#ffd369;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .register-link a:hover {

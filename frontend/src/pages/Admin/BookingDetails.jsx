@@ -15,7 +15,6 @@ const BookingDetails = () => {
         try {
             const res = await axiosInstance.get(`/api/bookings/${id}`);
             setBooking(res.data);
-            console.log("BOOKING DATA:", res.data)
             setLoading(false);
         } catch (err) {
             console.error(err);
@@ -86,7 +85,7 @@ const BookingDetails = () => {
                                             <td>{ins.type}</td>
                                             <td>{ins.amount.toLocaleString()} AED</td>
                                             <td>{new Date(ins.dueDate).toLocaleDateString()}</td>
-                                            {/* <td>{isOverdue ? "Overdue" : ins.status}</td> */}
+                                            
                                             <td className={`status-cell ${isOverdue ? "overdue" : ins.status}`}>
                                                 {isOverdue ? "Overdue" : ins.status}
                                             </td>

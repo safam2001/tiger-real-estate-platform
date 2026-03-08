@@ -25,7 +25,7 @@ const Payments = () => {
     fetchPayments();
   }, []);
           // ////////////////
-          const approvePayment = async (id) => {
+  const approvePayment = async (id) => {
   try {
     await axiosInstance.put(`/api/payments/approve/${id}`);
     alert("Payment approved!");
@@ -311,17 +311,7 @@ const Payments = () => {
                           Confirm
                         </button>
                       )}
-                      {/* زر Confirm يرجع بسهولة بعد إصلاح الخطأ */}
-                      {/* {p.status === "pending" && (
-            <button
-              className="btn confirm"
-              onClick={() => confirmPayment(p.id)}
-              style={{ marginLeft: "10px" }}
-            >
-              Confirm
-            </button>
-          )} */}
-                    </td>
+               </td>
                   </tr>
                 );
               })}

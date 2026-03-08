@@ -88,7 +88,8 @@ Project.hasMany(Unit, {
 
 // كل وحدة تنتمي لمشروع واحد
 Unit.belongsTo(Project, { 
-  foreignKey: 'projectId',
+  foreignKey: 'projectId'
+  ,
   as: 'Project'
 });
 

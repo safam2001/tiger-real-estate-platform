@@ -5,7 +5,7 @@ const Project = require("../models/project");
 const getAllUnits = async (req, res) => {
   try {
     const { projectId } = req.query;
-    const where = projectId ? { projectId } : {}; // إذا تم إرسال projectId نفلتر الوحدات الخاصة به
+    const where = projectId ? { projectId:Number(projectId) } : {}; // إذا تم إرسال projectId نفلتر الوحدات الخاصة به
 
     const units = await Unit.findAll({
       where,

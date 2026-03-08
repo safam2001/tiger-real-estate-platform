@@ -98,8 +98,6 @@ if (hour < 10 || hour > 17 || (hour === 17 && minute > 30)) {
 
 
 
-    // تعيين تذكير الإيميل بشكل افتراضي لمنع الإرسال أكثر من مرة
-    bookingData.reminderSent = false;
 
     // إنشاء الحجز
     const booking = await Booking.create(bookingData);
@@ -120,7 +118,7 @@ if (hour < 10 || hour > 17 || (hour === 17 && minute > 30)) {
       await Installment.bulkCreate(installmentRecords);
     }
 
-    // جلب الحجز مع العلاقات لتوضيح البيانات في الإيميل
+    // جلب الحجز مع العلاقات لتوضيح البيانات
     const bookingWithRelations = await Booking.findByPk(booking.id, {
       include: [
         { model: Unit, as: "Unit", include: [{ model: Project, as: "Project" }] },
@@ -138,23 +136,7 @@ if (hour < 10 || hour > 17 || (hour === 17 && minute > 30)) {
   }
 };
 
-// ➤ إرسال تذكير قبل موعد الحجز (مرة واحدة فقط)
-const sendBookingReminder = async (bookingId) => {
-  try {
-    const booking = await Booking.findByPk(bookingId, {
-      include: [
-        { model: User, as: "User" },
-        { model: Unit, as: "Unit", include: [{ model: Project, as: "Project" }] },
-      ],
-    });
 
-    if (!booking) throw new Error("Booking not found");
-
-   
-  } catch (err) {
-    console.error("Error sending reminder:", err.message);
-  }
-};
 // تأكيد الحجز
 
 const confirmBooking = async (req, res) => {
@@ -227,7 +209,7 @@ const markPaid = async (req, res) => {
 
 
 
-// إلغاء حجز وإرسال إيميل
+//إلغاء حجز ل
 
 const cancelBooking = async (req, res) => {
   try {
@@ -369,7 +351,6 @@ const deleteBooking = async (req, res) => {
 
 module.exports = {
   addBooking,
-  sendBookingReminder,
   cancelBooking,
   getAllBookings,
   getUserBookings,

@@ -8,7 +8,7 @@ const getAllUsers = async (req, res) => {
     // نستخدم attributes لتحديد الحقول المراد إرجاعها فقط
     // هذا يمنع إرسال بيانات حساسة مثل كلمة المرور
     const users = await User.findAll({
-      attributes: ["id", "firstName", "lastName", "email", "role", "createdAt"]
+      attributes: ["id", "firstName", "lastName", "email", "role","phone","isBlocked", "createdAt"]
     });
 
     // إرسال الرد للعميل
@@ -42,11 +42,12 @@ const getUserById = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password, role } = req.body;
+    const { firstName, lastName, email,phone,role } = req.body;
 
     // إنشاء المستخدم في قاعدة البيانات
     // ⚠️ كلمة المرور يتم تشفيرها تلقائيًا في الـ model hook قبل الحفظ
-    const user = await User.create({ firstName, lastName, email, password, role });
+    const defaulpassword="12345678";
+    const user = await User.create({ firstName, lastName, email,phone, password:defaulpassword, role });
 
     // إرسال بيانات المستخدم الجديد كرد للعميل
     res.status(201).json(user);
@@ -61,7 +62,7 @@ const updateUser = async (req, res) => {
     const user = await User.findByPk(req.user.id);
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    const { firstName, lastName, email, password,phone } = req.body;
+    const { firstName, lastName, email, password,phone,role,status } = req.body;
 
     if (password) {
       const salt = await bcrypt.genSalt(10);
@@ -71,7 +72,9 @@ const updateUser = async (req, res) => {
     user.firstName = firstName || user.firstName;
     user.lastName = lastName || user.lastName;
     user.email = email || user.email;
-    user.phone=phone ||user.phone
+    user.phone=phone ||user.phone;
+    user.role=role ||user.role;
+    user.status=status || user.status;
 
     await user.save();
 
@@ -119,6 +122,31 @@ const getCurrentUser = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+const updateUserByAdmin = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    const { firstName, lastName, email, phone, role} = req.body;
+
+    user.firstName = firstName || user.firstName;
+    user.lastName = lastName || user.lastName;
+    user.email = email || user.email;
+    user.phone = phone || user.phone;
+    user.role = role || user.role;
+    
+
+    await user.save();
+
+    res.json({ message: "User updated successfully", user });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+
+
 // حذف مستخدم
 
 const deleteUser = async (req, res) => {
@@ -136,6 +164,21 @@ const deleteUser = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+const toggleBlockUser = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    user.isBlocked = !user.isBlocked;
+    await user.save();
+
+    res.json({ message: "User status updated", user });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 
 // تصدير الدوال لاستخدامها في الـ Routes
-module.exports = { getAllUsers, getUserById, createUser, updateUser, deleteUser,getCurrentUser,changePassword };
+module.exports = { getAllUsers, getUserById, createUser,
+   updateUser, deleteUser,getCurrentUser
+  ,changePassword,toggleBlockUser,updateUserByAdmin };

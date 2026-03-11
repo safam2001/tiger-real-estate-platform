@@ -7,7 +7,6 @@ const { userOnly } = require("../middlewares/roleMiddleware");
 const {
   addBooking,
   cancelBooking,
-  sendBookingReminder,
   getAllBookings,
   getUserBookings,
   updateBooking,

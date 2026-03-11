@@ -8,7 +8,9 @@ const {
   updateUser,
   deleteUser,
   getCurrentUser,
-  changePassword
+  changePassword,
+  toggleBlockUser,
+  updateUserByAdmin
 } = require("../controllers/userController");
 
 const authMiddleware = require("../middlewares/authMiddleware");
@@ -25,7 +27,10 @@ router.get("/:id", authMiddleware, adminOnly, getUserById);
 
 // إنشاء مستخدم جديد (admin فقط)
 router.post("/", authMiddleware, adminOnly, createUser);
+router.put("/admin/:id",authMiddleware,adminOnly, updateUserByAdmin);
 
+router.put("/:id/block", authMiddleware, adminOnly, toggleBlockUser);
+router.put("/:id", authMiddleware, adminOnly, updateUser);
 // حذف مستخدم (admin فقط)
 router.delete("/:id", authMiddleware, adminOnly, deleteUser);
 

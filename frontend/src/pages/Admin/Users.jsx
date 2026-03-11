@@ -40,7 +40,7 @@ const Users = () => {
     e.preventDefault();
     try {
       if (editingUser) {
-        await axiosInstance.put(`/api/users/${editingUser.id}`, formData);
+        await axiosInstance.put(`/api/users/admin/${editingUser.id}`, formData);
       } else {
         await axiosInstance.post("/api/users", formData);
       }
@@ -305,22 +305,10 @@ const Users = () => {
                       }
                     >
                       <option value="user">User</option>
-                      <option value="manager">Manager</option>
+                    
                     </select>
                   </div>
 
-                  <div className="users-form-group">
-                    <label>Status</label>
-                    <select
-                      value={formData.status}
-                      onChange={(e) =>
-                        setFormData({ ...formData, status: e.target.value })
-                      }
-                    >
-                      <option value="active">Active</option>
-                      <option value="inactive">Inactive</option>
-                    </select>
-                  </div>
                 </div>
 
                 <div className="users-modal-actions">

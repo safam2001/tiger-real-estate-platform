@@ -38,7 +38,7 @@ const addBooking = async (req, res) => {
         }
       }
     }
-   
+
     const now = new Date();
     const maxVisitDate = new Date(now.getTime() + 48 * 60 * 60 * 1000);
     const visitDate = new Date(bookingData.visitDate);
@@ -50,24 +50,24 @@ const addBooking = async (req, res) => {
       });
     }
 
-             // دمج التاريخ + الوقت
-const [hours, minutes] = bookingData.visitTime.split(":").map(Number);
-const visitDateTime = new Date(bookingData.visitDate);
-visitDateTime.setHours(hours, minutes, 0, 0);
+    // دمج التاريخ + الوقت
+    const [hours, minutes] = bookingData.visitTime.split(":").map(Number);
+    const visitDateTime = new Date(bookingData.visitDate);
+    visitDateTime.setHours(hours, minutes, 0, 0);
 
-// التحقق من ساعات العمل (10:00 → 18:00)
-const hour = visitDateTime.getHours();
-const minute = visitDateTime.getMinutes();
+    // التحقق من ساعات العمل (10:00 → 18:00)
+    const hour = visitDateTime.getHours();
+    const minute = visitDateTime.getMinutes();
 
-if (hour < 10 || hour > 17 || (hour === 17 && minute > 30)) {
-  return res.status(400).json({
-    message: "Visit time must be between 10 AM and 5:30 PM"
-  });
-}
+    if (hour < 10 || hour > 17 || (hour === 17 && minute > 30)) {
+      return res.status(400).json({
+        message: "Visit time must be between 10 AM and 5:30 PM"
+      });
+    }
     // // ⏱ مدة الزيارة 30 دقيقة
-    const visitEnd = new Date(visitDate.getTime() + 30 * 60 * 1000);
+    const visitEnd = new Date(visitDateTime.getTime() + 30 * 60 * 1000);
 
-    // دمج التاريخ والوقت في كائن واحد
+    
 
     // 🔒 منع الحجز المتداخل لنفس الوحدة
     const existingBooking = await Booking.findOne({
@@ -127,7 +127,7 @@ if (hour < 10 || hour > 17 || (hour === 17 && minute > 30)) {
       ],
     });
 
- 
+
 
     res.status(201).json(bookingWithRelations);
   } catch (err) {
@@ -320,7 +320,7 @@ const updateBooking = async (req, res) => {
     // تحديث البيانات المرسلة
     await booking.update(req.body);
 
- 
+
 
     const updatedBooking = await Booking.findByPk(booking.id, {
       include: [

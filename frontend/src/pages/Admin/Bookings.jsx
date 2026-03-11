@@ -9,16 +9,16 @@ const Bookings = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [filterStatus, setFilterStatus] = useState("all");
   const [showPayModal, setShowPayModal] = useState(false);
   const [selectedBookingId, setSelectedBookingId] = useState(null);
   const [depositAmount, setDepositAmount] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("cash");
   const [paymentDate, setPaymentDate] = useState("");
-const navigate=useNavigate()
- 
+  const navigate = useNavigate()
+
   // جلب كل الحجوزات (Admin فقط)
- 
+
   const fetchBookings = async () => {
     try {
       setLoading(true);
@@ -109,7 +109,36 @@ const navigate=useNavigate()
     <AdminLayout>
       <div className="admin-bookings">
         <h1>Bookings Management</h1>
+        <div className="filters">
+          <button
+            className={`all ${filterStatus === "all" ? "active" : ""}`}
+            onClick={() => setFilterStatus("all")}
+          >
+            All
+          </button>
 
+          <button
+            className={`confirmed ${filterStatus === "confirmed" ? "active" : ""}`}
+            onClick={() => setFilterStatus("confirmed")}
+          >
+            Confirmed
+          </button>
+
+          <button
+            className={`pending ${filterStatus === "pending" ? "active" : ""}`}
+            onClick={() => setFilterStatus("pending")}
+          >
+            Pending
+          </button>
+
+          <button
+            className={`cancelled ${filterStatus === "cancelled" ? "active" : ""}`}
+            onClick={() => setFilterStatus("cancelled")}
+          >
+            Cancelled
+          </button>
+        </div>
+        
         {bookings.length === 0 ? (
           <p>No bookings found.</p>
         ) : (
@@ -128,7 +157,7 @@ const navigate=useNavigate()
             </thead>
 
             <tbody>
-              {bookings.map((b, index) => (
+              {bookings.filter(b => filterStatus === "all" ? true : b.status === filterStatus).map((b, index) => (
                 <tr key={b.id}>
                   <td>{index + 1}</td>
 

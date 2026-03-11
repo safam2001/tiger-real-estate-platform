@@ -295,3 +295,11 @@
     padding: 16px;
   }
 }
+
+.btn-confirm{
+background-color:rgb(30, 135, 184);
+ font-size: 13px;
+ width: 70px;
+ height: 25px;
+ border-radius: 3px;
+}

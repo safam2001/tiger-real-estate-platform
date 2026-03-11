@@ -81,10 +81,9 @@ const Payments = () => {
   // ====== Filtering ======
   const filteredPayments = useMemo(() => {
     return payments.filter((p) => {
-      const userName =
-        p.Booking?.User?.name ||
-        p.Booking?.User?.fullName ||
-        "Unknown User";
+     const userName = p.Booking?.User
+      ? `${p.Booking.User.firstName} ${p.Booking.User.lastName}`.toLowerCase()
+      : "unknown user";
 
       const matchesSearch = userName
         .toLowerCase()
@@ -304,7 +303,7 @@ const Payments = () => {
 
                       {p.status === "pending" && (
                         <button
-                          className="btn confirm"
+                          className="btn-confirm"
                           onClick={() => approvePayment(p.id)}
                           style={{ marginLeft: "10px" }}
                         >

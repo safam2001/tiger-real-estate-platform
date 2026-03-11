@@ -181,3 +181,52 @@
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
+
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.2s ease;
+  background-color: #f0f0f0;
+  color: #161616;
+}
+
+.filters button:hover {
+  opacity: 0.85;
+}
+
+.filters button.active {
+  color: white;
+}
+
+.filters button.all.active {
+  background-color: #6c757d;
+}
+
+.filters button.confirmed.active {
+  background-color: #28a745;
+}
+
+.filters button.pending.active {
+  background-color: #ffc107;
+  color: black;
+}
+
+.filters button.cancelled.active {
+  background-color: #dc3545;
+}
+
+.filters button.no_show.active {
+  background-color: #343a40;
+}

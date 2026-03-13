@@ -74,7 +74,7 @@ const Units = () => {
       const unitsRes = await axiosInstance.get('/api/units');
       setUnits(unitsRes.data);
     } catch (error) {
-      alert('حدث خطأ أثناء الحفظ');
+      alert('an error occurred during saving');
       console.error(error);
     }
   };
@@ -106,7 +106,7 @@ const Units = () => {
       await axiosInstance.delete(`/api/units/${id}`);
       setUnits(units.filter(u => u.id !== id));
     } catch (error) {
-      console.log("delet errr:",error.respose?.data || error.message)
+     console.error("Delete unit failed:", error.response?.data || error.message);
       alert('an error occurred during deletion');
     }
   };

@@ -19,6 +19,12 @@ const addBooking = async (req, res) => {
 
     // إذا كان المستخدم مسجل الدخول، نخزن الـ userId
     if (req.user) {
+
+      if (req.user.isBlocked) {
+        return res.status(403).json({
+          message: "Your account is blocked. You cannot make bookings."
+        });
+      }
       bookingData.userId = req.user.id;
 
       // 🔒 منع الحجز إذا كان عنده حجز no_show ولم تنتهِ مدة ١٥ يوم
@@ -67,8 +73,6 @@ const addBooking = async (req, res) => {
     // // ⏱ مدة الزيارة 30 دقيقة
     const visitEnd = new Date(visitDateTime.getTime() + 30 * 60 * 1000);
 
-    
-
     // 🔒 منع الحجز المتداخل لنفس الوحدة
     const existingBooking = await Booking.findOne({
       where: {
@@ -94,10 +98,6 @@ const addBooking = async (req, res) => {
         message: "This time slot overlaps with an existing booking"
       });
     }
-
-
-
-
 
     // إنشاء الحجز
     const booking = await Booking.create(bookingData);
@@ -207,8 +207,6 @@ const markPaid = async (req, res) => {
   }
 };
 
-
-
 //إلغاء حجز ل
 
 const cancelBooking = async (req, res) => {
@@ -275,7 +273,7 @@ const getUserBookings = async (req, res) => {
   }
 
 };
-
+//ابحث عن الحجز بواسطة id
 const getBookingById = async (req, res) => {
   try {
     const booking = await Booking.findByPk(req.params.id, {

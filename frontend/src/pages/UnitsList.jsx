@@ -19,11 +19,9 @@ const UnitsList = () => {
   const [maxPrice, setMaxPrice] = useState("");
   const [minArea, setMinArea] = useState("");
   const [maxArea, setMaxArea] = useState("");
-  const [type, setType] = useState("");
   const [openBooking, setOpenBooking] = useState(false);
   const [visitDate, setVisitDate] = useState("");
   const [visitTime, setVisitTime] = useState("");
-  const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
 
@@ -40,14 +38,14 @@ const UnitsList = () => {
 
     return url; // إذا كان embed جاهز
   }
- useEffect(() => {
-  axiosInstance.get(`/api/units?projectId=${projectId}`)
-    .then((res) => {
-      setUnits(res.data);
-      setFilteredUnits(res.data);
-    })
-    .catch((err) => console.error(err));
-}, [projectId]);
+  useEffect(() => {
+    axiosInstance.get(`/api/units?projectId=${projectId}`)
+      .then((res) => {
+        setUnits(res.data);
+        setFilteredUnits(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, [projectId]);
 
   useEffect(() => {
     let result = [...units];
@@ -67,10 +65,8 @@ const UnitsList = () => {
     if (minArea) result = result.filter((u) => u.area >= minArea);
     if (maxArea) result = result.filter((u) => u.area <= maxArea);
 
-    if (type) result = result.filter((u) => u.type === type);
-
     setFilteredUnits(result);
-  }, [search, status, bedrooms, minPrice, maxPrice, minArea, maxArea, type, units, videos]);
+  }, [search, status, bedrooms, minPrice, maxPrice, minArea, maxArea, units]);
 
 
   const generateTimes = () => {
@@ -97,29 +93,34 @@ const UnitsList = () => {
       alert("Please select date and time");
       return;
     }
+    const now = new Date();
 
     // دمج التاريخ + الوقت
     const [hours, minutes] = visitTime.split(":").map(Number);
     const selectedDateTime = new Date(visitDate);
-    selectedDateTime.setHours(hours, minutes, 0, 0); // ✅ هنا الساعة مضبوطة
+    selectedDateTime.setHours(hours, minutes, 0, 0);
 
-    const now = new Date();
-    const maxAllowed = new Date(now.getTime() + 48 * 60 * 60 * 1000); // 48 ساعة
-
-    // تحقق من 48 ساعة
-    if (selectedDateTime > maxAllowed) {
-      alert("Booking must be within 48 hours from now!");
+    // ❗ 1) منع الحجز في الماضي
+    if (selectedDateTime < now) {
+      alert("You cannot book a past date or time.");
       return;
     }
 
-    // تحقق من ساعات العمل (10:00 → 17:30)
+    // ❗ 2) السماح فقط بالحجز خلال 48 ساعة
+    const maxAllowed = new Date(now.getTime() + 48 * 60 * 60 * 1000);
+    if (selectedDateTime > maxAllowed) {
+      alert("Booking must be within 48 hours from now.");
+      return;
+    }
+
+    // ❗ 3) التحقق من ساعات العمل
     const hour = selectedDateTime.getHours();
     const minute = selectedDateTime.getMinutes();
     if (hour < 10 || hour > 17 || (hour === 17 && minute > 30)) {
       alert("Booking time must be between 10:00 AM and 5:30 PM");
       return;
     }
-
+    
     // كل شيء تمام → إرسال للحجز
     try {
       await axiosInstance.post("/api/bookings", {
@@ -137,7 +138,6 @@ const UnitsList = () => {
     }
   };
 
-
   return (
     <div className="units-page">
 
@@ -149,7 +149,7 @@ const UnitsList = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        {/* <span className="search-icon">🔍</span> */}
+
       </div>
 
       {/* ===== الفلاتر ===== */}
@@ -282,7 +282,7 @@ const UnitsList = () => {
 
 
             </div>
-         
+
 
             <label>Select Date</label>
             <input
@@ -301,7 +301,7 @@ const UnitsList = () => {
                 <option key={i} value={t.value}>{t.label}</option> // value = 24h, label = AM/PM
               ))}
             </select>
-           
+
             <div className="modal-buttons">
               <button className="btn confirm" onClick={handleBooking}>
                 Confirm

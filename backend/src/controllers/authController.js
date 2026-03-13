@@ -34,7 +34,9 @@ const register = async (req, res) => {
 
     // إنشاء JWT Token بعد التسجيل مباشرة
     const token = jwt.sign(
-      { id: user.id, role: user.role },
+      { id: user.id, role: user.role 
+      
+      },
       JWT_SECRET,
       { expiresIn: JWT_EXPIRES_IN }
     );
@@ -82,7 +84,9 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: user.id, role: user.role },
+      { id: user.id, role: user.role,
+         isBlocked:user.isBlocked
+       },
       JWT_SECRET,
       { expiresIn: JWT_EXPIRES_IN }
     );

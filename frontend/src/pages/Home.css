@@ -37,14 +37,7 @@ body {
     filter: brightness(0.7);
 }
 
-/* الطبقة الداكنة */
-/* .hero-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 2;
-} */
+
 
 /* النص */
 .hero-content {

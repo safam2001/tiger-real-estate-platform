@@ -4,9 +4,7 @@
 .admin-page.units-page {
   padding: 20px 30px;
   background: #f5f7fa;
-  /* min-height: 100vh; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* margin-bottom: 87px; */
   margin-top: 10px;
   
 }
@@ -50,8 +48,6 @@
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   overflow-x: auto;
-  /* width: 100%; */
-  /* max-width: 1400px; */
 }
 
 .data-table-units {
